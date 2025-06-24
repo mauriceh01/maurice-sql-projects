@@ -20,9 +20,9 @@ USE SchoolManagementDB;
 CREATE TABLE Parents (
   ParentID 		  INT PRIMARY KEY AUTO_INCREMENT,
   FirstName		  VARCHAR(50),
-  LastName  		  VARCHAR(50),
-  PhoneNumber             CHAR(10),
-  Email                   VARCHAR(100) UNIQUE
+  LastName  		VARCHAR(50),
+  PhoneNumber   CHAR(10),
+  Email         VARCHAR(100) UNIQUE
 );
 
 -- ===================================================
