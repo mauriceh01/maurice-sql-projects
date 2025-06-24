@@ -39,8 +39,8 @@ CREATE TABLE Grades (
 -- ===================================================
 
 CREATE TABLE TeacherType (
-	TeacherTypeID     INT PRIMARY KEY AUTO_INCREMENT,
-  TypeName          VARCHAR(20) -- e.g. full-time, part-time
+  TeacherTypeID     	INT PRIMARY KEY AUTO_INCREMENT,
+  TypeName          	VARCHAR(20) -- e.g. full-time, part-time
 );
 
 -- ===================================================
@@ -48,8 +48,8 @@ CREATE TABLE TeacherType (
 -- ===================================================
 
 CREATE TABLE Departments  (
-	DepartmentID      INT PRIMARY KEY AUTO_INCREMENT,
-	DepartmentName    VARCHAR(10)
+  DepartmentID       	INT PRIMARY KEY AUTO_INCREMENT,
+  DepartmentName    	VARCHAR(10)
 );
 
 -- ===================================================
@@ -57,25 +57,25 @@ CREATE TABLE Departments  (
 -- ===================================================
 
 CREATE TABLE Gender (
-  GenderID          INT PRIMARY KEY AUTO_INCREMENT,
-  GenderName        VARCHAR(20) UNIQUE
+  GenderID          	 INT PRIMARY KEY AUTO_INCREMENT,
+  GenderName        	 VARCHAR(20) UNIQUE
 );
 
 -- ===================================================
 -- ============== Teachers Table =====================
 -- ===================================================
 
-CREATE TABLE Teachers (
-	TeacherID         INT PRIMARY KEY AUTO_INCREMENT,
-  DepartmentID      INT NOT NULL,
-  TeacherTypeID     INT NOT NULL,
-  GenderID          INT,
-  TeacherFirstName  VARCHAR(50),
-  TeacherLastName   VARCHAR(50),
-  TeacherDOB        DATE,
-  TeacherAddress    VARCHAR(100),
-  TeacherPhone      CHAR(10),
-  TeacherEmail	    VARCHAR(100) UNIQUE,
+CREATE TABLE Teachers ( 
+  TeacherID         	INT PRIMARY KEY AUTO_INCREMENT,
+  DepartmentID      	INT NOT NULL,
+  TeacherTypeID     	INT NOT NULL,
+  GenderID          	INT,
+  TeacherFirstName  	VARCHAR(50),
+  TeacherLastName   	VARCHAR(50),
+  TeacherDOB        	DATE,
+  TeacherAddress    	VARCHAR(100),
+  TeacherPhone      	CHAR(10),
+  TeacherEmail	    	VARCHAR(100) UNIQUE,
   FOREIGN KEY (TeacherTypeID) REFERENCES TeacherType(TeacherTypeID),
   FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID),
   FOREIGN KEY (GenderID) REFERENCES Gender(GenderID)
@@ -86,7 +86,7 @@ CREATE TABLE Teachers (
 -- ===================================================
 
 CREATE TABLE Classrooms (
-	ClassroomID       INT PRIMARY KEY AUTO_INCREMENT,
+  ClassroomID       INT PRIMARY KEY AUTO_INCREMENT,
   GradeID           INT NOT NULL,
   TeacherID         INT NOT NULL,
   ClassroomName     VARCHAR(20),
@@ -105,11 +105,11 @@ CREATE TABLE Students (
   GenderID          INT,
   StudentFirstName  VARCHAR(50) NOT NULL,
   StudentLastName   VARCHAR(50) NOT NULL,
-	StudentDOB        DATE,
+  StudentDOB        DATE,
   StudentAddress    VARCHAR(100),
   StudentPhone      CHAR(10),
   StudentEmail      VARCHAR(100) UNIQUE,
-	FOREIGN KEY (ParentID) REFERENCES Parents(ParentID),
+  FOREIGN KEY (ParentID) REFERENCES Parents(ParentID),
   FOREIGN KEY (ClassroomID) REFERENCES Classrooms(ClassroomID),
   FOREIGN KEY (GenderID) REFERENCES Gender(GenderID)
 );
@@ -119,7 +119,7 @@ CREATE TABLE Students (
 -- ===================================================
 
 CREATE TABLE Courses (
-	CourseID          INT PRIMARY KEY AUTO_INCREMENT,
+   CourseID         INT PRIMARY KEY AUTO_INCREMENT,
   TeacherID         INT NOT NULL,
   DepartmentID      INT NOT NULL,
   CourseName        VARCHAR(50) NOT NULL,
@@ -133,7 +133,7 @@ CREATE TABLE Courses (
 -- ===================================================    
     
 CREATE TABLE Attendance (
-	AttendanceID       INT PRIMARY KEY AUTO_INCREMENT,
+  AttendanceID       INT PRIMARY KEY AUTO_INCREMENT,
   StudentID          INT NOT NULL,
   ClassroomID        INT NOT NULL,
   CurrentDate        DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -156,7 +156,7 @@ CREATE TABLE ExamType (
 -- =================================================== 
  
 CREATE TABLE Exams  (
-	ExamID            INT PRIMARY KEY AUTO_INCREMENT,
+  ExamID            INT PRIMARY KEY AUTO_INCREMENT,
   ExamTypeID        INT NOT NULL,
   ExamName          VARCHAR(50),
   StartDate         DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -169,10 +169,10 @@ CREATE TABLE Exams  (
  
 CREATE TABLE ExamResult (
   ExamResultID      INT PRIMARY KEY AUTO_INCREMENT,
-  ExamID			      INT NOT NULL,
-  StudentID			    INT NOT NULL,
-  CourseID			    INT NOT NULL,
-  ExamScore			    DECIMAL(5,2),
+  ExamID            INT NOT NULL,
+  StudentID	    INT NOT NULL,
+  CourseID	    INT NOT NULL,
+  ExamScore	    DECIMAL(5,2),
   FOREIGN KEY  (ExamID)    REFERENCES Exams(ExamID),
   FOREIGN KEY  (StudentID) REFERENCES Students(StudentID),
   FOREIGN KEY  (CourseID)  REFERENCES Courses(CourseID),
