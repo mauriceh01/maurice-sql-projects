@@ -18,11 +18,11 @@ USE SchoolManagementDB;
 -- ===================================================
 
 CREATE TABLE Parents (
-	ParentID 		    INT PRIMARY KEY AUTO_INCREMENT,
-  FirstName		    VARCHAR(50),
+  ParentID 		  INT PRIMARY KEY AUTO_INCREMENT,
+  FirstName		  VARCHAR(50),
   LastName  		  VARCHAR(50),
-  PhoneNumber     CHAR(10),
-  Email           VARCHAR(100) UNIQUE
+  PhoneNumber             CHAR(10),
+  Email                   VARCHAR(100) UNIQUE
 );
 
 -- ===================================================
@@ -30,8 +30,8 @@ CREATE TABLE Parents (
 -- ===================================================
 
 CREATE TABLE Grades (
-	GradeID          INT PRIMARY KEY AUTO_INCREMENT,
-  GradeName        VARCHAR(10)
+  GradeID          	INT PRIMARY KEY AUTO_INCREMENT,
+  GradeName        	VARCHAR(10)
 );
 
 -- ===================================================
